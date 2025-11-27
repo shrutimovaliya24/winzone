@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  /* Responsive Breakpoints - Mobile, Tablet, Laptop, Desktop */
+  /* Mobile S: 320px - Default (no prefix needed) */
+  /* Mobile M: 375px - Custom breakpoint */
+  --breakpoint-ex-sm: 26.625rem; /* 426px - Large Mobile */
+  --breakpoint-sm: 36.25rem; /* 580px - Small Tablet */
+  --breakpoint-md: 48rem; /* 768px - Tablet */
+  --breakpoint-lg: 64rem; /* 1024px - Laptop/Desktop */
+  --breakpoint-xl: 80rem; /* 1280px - Large Desktop */
+  --breakpoint-2xl: 89.9375rem; /* 1439px - Extra Large Desktop */
+
+  /* Theme Colors */
+  --color-theme-color: #29485f;
+}
+
+/* Custom Media Queries for Small Mobile Devices - Same Padding for Mobile S & Mobile M */
+/* Both Mobile S (320px) and Mobile M (375px) get the same 16px padding */
+@media (max-width: 425px) {
+  .section-container {
+    @apply px-4; /* 16px padding - same for both Mobile S (320px) and Mobile M (375px) */
+  }
+  
+  .container {
+    padding-left: 1rem !important; /* 16px - same for both 320px and 375px */
+    padding-right: 1rem !important; /* 16px - same for both 320px and 375px */
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  /* Remove any conflicting padding from section elements that use container */
+  section.container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ensure no additional horizontal spacing */
+  .container > * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Override any max-width constraints on mobile */
+  .container,
+  .container * {
+    box-sizing: border-box;
+  }
+  
+  /* Ensure forms are full width on mobile */
+  form,
+  form * {
+    max-width: 100% !important;
+  }
+  
+  /* Remove max-width constraints on form inputs on mobile */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    max-width: 100% !important;
+  }
+  
+  /* Ensure full width images on mobile */
+  img {
+    max-width: 100%;
+  }
+  
+  /* Remove body/html default horizontal padding/margin */
+  body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  html {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.font-russo {
+  font-family: var(--font-russo), sans-serif;
+}
+
+.font-titillium {
+  font-family: var(--font-titillium), sans-serif;
+}
+
+.font-archivo {
+  font-family: var(--font-archivo), sans-serif;
+}
+
+.font-bacasime {
+  font-family: var(--font-bacasime), serif;
+}
+
+.section-container {
+  @apply sm:py-6 py-4 md:py-9 lg:py-12 xl:py-16 sm:px-8 px-4 container mx-auto;
+}
+
+.global-grid-responsive {
+  @apply grid xl:gap-16 lg:gap-12 md:gap-10 sm:gap-8 gap-6;
+}
+
+.text-2xl-responsive {
+  @apply lg:text-2xl sm:text-xl text-lg;
+}
+
+.box-shadow-testimonial {
+  box-shadow: 0px 57.44px 28.72px -3.75px #2c2d3003,
+    0px 35.09px 17.55px -3.13px #2c2d3003, 0px 21.73px 10.87px -2.5px #2c2d3003,
+    0px 13.07px 6.54px -1.88px #2c2d3003, 0px 7.17px 3.58px -1.25px #2c2d3003,
+    0px 3.02px 1.51px -0.63px #2c2d3003, 0px 2px 6px -4px #2c2d3014;
+}
+
+@keyframes smoothPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  25%,
+  75% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.grid-cell {
+  animation-name: smoothPulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: var(--delay);
+}
+
+.product-swiper .swiper-slide {
+  transition: all 0.3s ease !important;
+  opacity: 0.6 !important;
+  transform: scale(1) !important;
+}
+
+.product-swiper .swiper-slide-next,
+.product-swiper .swiper-slide-prev {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.product-swiper .swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+@media (max-width: 639px) {
+  .product-swiper .swiper-slide {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
