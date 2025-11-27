@@ -3,20 +3,20 @@ import CommonTitle from "../Common/CommonTitle";
 import SvgIcon from "../Common/SvgIcon";
 import Image from "next/image";
 
-const TestimonialCard = ({ quote, imgSrc, alt, name, role, smHeight }) => {
-  const cardClass = `bg-[#113148] sm:p-6 p-4 box-shadow-testimonial rounded-xl ${smHeight} grid gap-4 justify-between content-between`;
+const TestimonialCard = ({ quote, imgSrc, alt, name, role }) => {
+  const cardClass = `bg-[#113148] sm:p-6 p-4 box-shadow-testimonial rounded-xl grid gap-4 justify-between content-between w-full h-full min-h-fit`;
 
   return (
     <div className={cardClass}>
-      <div className="grid gap-2.5 sm:h-fit">
-        <SvgIcon type="quote" className="w-6 h-6 sm:w-6 sm:h-6" normalColor="white" />
-        <p className="font-archivo xl:text-base sm:text-sm text-sm text-[#C6C6C6] leading-relaxed">
+      <div className="grid gap-2.5 h-fit flex-1 min-w-0">
+        <SvgIcon type="quote" className="w-6 h-6 sm:w-6 sm:h-6 flex-shrink-0" normalColor="white" />
+        <p className="font-archivo xl:text-lg lg:text-base md:text-[15px] sm:text-sm text-sm text-[#C6C6C6] leading-relaxed break-words overflow-wrap-anywhere hyphens-auto">
           {quote}
         </p>
       </div>
 
-      <div className="flex gap-3 items-center">
-        <div className="relative w-12 h-12 flex-shrink-0 rounded-full overflow-hidden">
+      <div className="flex gap-3 items-center flex-shrink-0 mt-auto">
+        <div className="relative w-12 h-12 sm:w-12 sm:h-12 flex-shrink-0 rounded-full overflow-hidden">
           <Image 
             src={imgSrc} 
             width={48} 
@@ -25,9 +25,9 @@ const TestimonialCard = ({ quote, imgSrc, alt, name, role, smHeight }) => {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="font-titillium min-w-0">
-          <h4 className="text-white font-semibold sm:text-base text-sm">{name}</h4>
-          <p className="mt-1 text-[#C6C6C6] text-xs">{role}</p>
+        <div className="font-titillium min-w-0 flex-1">
+          <h4 className="text-white font-semibold xl:text-lg lg:text-base md:text-[15px] sm:text-sm text-sm break-words">{name}</h4>
+          <p className="mt-1 text-[#C6C6C6] xl:text-sm lg:text-xs md:text-[11px] text-xs break-words">{role}</p>
         </div>
       </div>
     </div>
@@ -39,12 +39,11 @@ const Testimonial = () => {
     {
       id: "l1",
       quote:
-        "WinZone transformed our living experience. The products improved comfort and reduced energy bills instantly. Installation was simple, and the quality speaks for itself. A perfect balance of design, efficiency, and sustainability—I’m glad we chose WinZone for our home.",
+        "WinZone transformed our living experience. The products improved comfort and reduced energy bills instantly. Installation was simple, and the quality speaks for itself. A perfect balance of design, efficiency, and sustainability—I'm glad we chose WinZone for our home.",
       imgSrc: "/img/profile-picture-1.png",
       alt: "Testimonial Profile Picture 1 Image",
       name: "Aarav Mehta",
       role: "Homeowner",
-      smHeight: "sm:h-[303px]",
     },
     {
       id: "l2",
@@ -54,7 +53,6 @@ const Testimonial = () => {
       alt: "Testimonial Profile Picture 1 Image",
       name: "Aarav Mehta",
       role: "Contractor",
-      smHeight: "sm:h-[303px]",
     },
   ];
 
@@ -66,7 +64,6 @@ const Testimonial = () => {
     alt: "Testimonial Profile Picture 2 Image",
     name: "Priya Shah",
     role: "Architect",
-    smHeight: "sm:h-[290px]",
   };
 
   const rightBottom = [
@@ -78,17 +75,15 @@ const Testimonial = () => {
       alt: "Testimonial Profile Picture 3 Image",
       name: "Karan Joshi",
       role: "Contractor",
-      smHeight: "sm:h-[316px]",
     },
     {
       id: "r3",
       quote:
-        "WinZone improved the way we live. Our home feels cooler in summer, warmer in winter, and our bills are lower. The quality and finish are excellent, and the service was smooth. I couldn’t ask for more from a brand.",
+        "WinZone improved the way we live. Our home feels cooler in summer, warmer in winter, and our bills are lower. The quality and finish are excellent, and the service was smooth. I couldn't ask for more from a brand.",
       imgSrc: "/img/profile-picture-4.png",
       alt: "Testimonial Profile Picture 4 Image",
       name: "Sneha Desai",
       role: "Homeowner",
-      smHeight: "sm:h-[316px]",
     },
   ];
 
@@ -114,17 +109,17 @@ const Testimonial = () => {
           gridCenter={true}
         />
 
-        <div className="grid lg:grid-cols-2 gap-4">
-          <div className="grid gap-4">
+        <div className="grid lg:grid-cols-2 xl:gap-6 lg:gap-5 md:gap-4 gap-3 w-full">
+          <div className="grid xl:gap-6 lg:gap-5 md:gap-4 gap-3 w-full min-w-0">
             {leftColumn.map((item) => (
               <TestimonialCard key={item.id} {...item} />
             ))}
           </div>
 
-          <div className="grid gap-4">
+          <div className="grid xl:gap-6 lg:gap-5 md:gap-4 gap-3 w-full min-w-0">
             <TestimonialCard {...rightTop} />
 
-            <div className="sm:flex grid gap-4">
+            <div className="sm:flex grid xl:gap-6 lg:gap-5 md:gap-4 gap-3 w-full">
               {rightBottom.map((item) => (
                 <TestimonialCard key={item.id} {...item} />
               ))}

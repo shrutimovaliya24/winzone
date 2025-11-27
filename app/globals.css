@@ -117,6 +117,22 @@
     0px 3.02px 1.51px -0.63px #2c2d3003, 0px 2px 6px -4px #2c2d3014;
 }
 
+/* Testimonial card responsive text handling */
+.box-shadow-testimonial p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.box-shadow-testimonial h4,
+.box-shadow-testimonial p:last-child {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
 @keyframes smoothPulse {
   0%,
   100% {
