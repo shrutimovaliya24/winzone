@@ -35,7 +35,7 @@ const russo = Russo_One({
 
 export const metadata = {
   verification: {
-    google: ["64sXBaC_Rmt3G8q-yKrnVlzWWSFoiIwjcqw28XoPq8k"],
+    google: "zUN8ZE1Ux3tvE3yUckZDXyJ3ht6drOqlQ4I8qxXLkgY",
   },
   icons: {
     icon: [
@@ -65,11 +65,6 @@ export default function RootLayout({ children }) {
               f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PBLDVXKK');`,
           }}
-        />
-
-        <meta
-          name="google-site-verification"
-          content="zUN8ZE1Ux3tvE3yUckZDXyJ3ht6drOqlQ4I8qxXLkgY"
         />
 
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
