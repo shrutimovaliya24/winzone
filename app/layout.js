@@ -67,6 +67,11 @@ export default function RootLayout({ children }) {
           }}
         />
 
+        <meta
+          name="google-site-verification"
+          content="zUN8ZE1Ux3tvE3yUckZDXyJ3ht6drOqlQ4I8qxXLkgY"
+        />
+
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
