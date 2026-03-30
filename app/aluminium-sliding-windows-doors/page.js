@@ -86,7 +86,7 @@ const SlidingPage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/sliding-img/sliding-1.jpg"
+              src="/img/sliding-img/sliding-1.webp"
               width={402}
               height={408}
               alt="Sliding Windows Advantages"

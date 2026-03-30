@@ -86,7 +86,7 @@ const ByRangePage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/by-range-img/by-range-1.jpg"
+              src="/img/by-range-img/by-range-1.webp"
               width={402}
               height={408}
               alt="Window & Door Ranges Advantages"

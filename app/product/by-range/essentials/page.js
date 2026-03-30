@@ -86,7 +86,7 @@ const EssentialsRangePage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/essentials-range-img/essentials-range-1.jpg"
+              src="/img/essentials-range-img/essentials-range-1.webp"
               width={402}
               height={408}
               alt="Essentials Range Advantages"

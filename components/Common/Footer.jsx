@@ -16,6 +16,17 @@ const footerInfo = [
     ],
   },
   {
+    title: "Our Locations",
+    subCategory: [
+      { id: 1, name: "Rajkot", href: "/rajkot" },
+      { id: 2, name: "Vadodara", href: "/vadodara" },
+      { id: 3, name: "Bangalore", href: "/bangalore" },
+      { id: 4, name: "Mumbai", href: "/mumbai" },
+      { id: 5, name: "Hyderabad", href: "/hyderabad" },
+      { id: 6, name: "Chennai", href: "/chennai" },
+    ],
+  },
+  {
     title: "Our Projects",
     subCategory: [
       {
@@ -111,7 +122,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="font-archivo xl:px-12 lg:px-10 md:px-8 flex max-sm:flex-wrap gap-6 justify-between">
+          <div className="font-archivo xl:px-12 lg:px-10 md:px-8 flex flex-wrap gap-6 justify-between">
             {footerInfo.map((col) => (
               <FooterColumn
                 key={col.title}

@@ -86,7 +86,7 @@ const DuraslimCasementPage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/duraslim-casement-img/duraslim-casement-1.jpg"
+              src="/img/duraslim-casement-img/duraslim-casement-1.webp"
               width={402}
               height={408}
               alt="Duraslim Casement Windows Advantages"

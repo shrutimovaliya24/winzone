@@ -20,6 +20,16 @@ export const metadata = {
     "aluminium windows gujarat",
     "windows and doors rajkot",
   ],
+  alternates: {
+    canonical: "https://winzonsystem.com/rajkot",
+  },
+  openGraph: {
+    title: "Aluminium Windows & Doors in Rajkot | WinZone",
+    description:
+      "Premium aluminium windows and doors in Rajkot. Energy-efficient, durable solutions for homes and commercial spaces across Rajkot and Gujarat.",
+    url: "https://winzonsystem.com/rajkot",
+    type: "website",
+  },
 };
 
 const rajkotInformation = [
@@ -41,9 +51,65 @@ const rajkotAdvantages = [
 ];
 
 
+const rajkotSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "WinZone - Aluminium Windows & Doors Rajkot",
+      "description": "Premium aluminium windows and doors in Rajkot. Energy-efficient, durable solutions for residential, commercial, and industrial projects across Rajkot and Gujarat.",
+      "url": "https://winzonsystem.com/rajkot",
+      "areaServed": {
+        "@type": "City",
+        "name": "Rajkot",
+        "containedInPlace": { "@type": "State", "name": "Gujarat" }
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "WinZone",
+        "url": "https://winzonsystem.com"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you provide windows and doors in Rajkot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! WinZone provides premium aluminium windows and doors in Rajkot. We have local presence and expertise to serve residential, commercial, and industrial projects throughout Rajkot and surrounding areas in Gujarat." }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of windows and doors do you offer in Rajkot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We offer a comprehensive range of aluminium windows and doors in Rajkot including casement windows, sliding windows, tilt and turn windows, lift and slide doors, slide and fold doors, and more from our Duraslim, Duraslim Edge, and Essential Series." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide installation services in Rajkot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! We provide complete installation services in Rajkot. Our experienced team handles everything from consultation and design to manufacturing and professional installation." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your windows suitable for Rajkot's climate?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely! Our windows and doors feature thermal break technology for energy efficiency, weather-resistant seals for protection from monsoon and heat, and durable construction to withstand Rajkot's climate." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to get windows and doors in Rajkot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The timeline depends on your project requirements, customization needs, and order size. Our local presence in Rajkot allows for quicker response times and faster delivery compared to distant suppliers." }
+        }
+      ]
+    }
+  ]
+};
+
 const RajkotPage = () => {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(rajkotSchema) }}
+      />
       <CommonHeroSection
         title="Aluminium Windows & Doors in Rajkot"
         description="Experience premium aluminium windows and doors in Rajkot. Local expertise, quality products, and excellent service for your Rajkot project."
@@ -86,7 +152,7 @@ const RajkotPage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/rajkot-img/rajkot-1.jpg"
+              src="/img/rajkot-img/rajkot-1.webp"
               width={402}
               height={408}
               alt="Rajkot Windows & Doors Advantages"

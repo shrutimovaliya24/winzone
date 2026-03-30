@@ -22,7 +22,7 @@ const Faq = () => {
           <div className="md:p-8 sm:p-6 p-3 bg-theme-color rounded-xl ">
             <div className="grid sm:gap-4 gap-3">
               <Image
-                src="/img/people-few-question.png"
+                src="/img/people-few-question.webp"
                 width={82}
                 height={50}
                 alt="People Few Question Image"

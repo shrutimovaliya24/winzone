@@ -5,7 +5,7 @@ import React from "react";
 
 const galleryImages = [
   {
-    src: "/img/bedroom-img/bedroom-1.jpg",
+    src: "/img/bedroom-img/bedroom-1.webp",
     alt: "Bedroom Aluminium Windows Installation",
   },
   {

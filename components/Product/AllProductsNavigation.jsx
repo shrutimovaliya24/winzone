@@ -11,13 +11,13 @@ const allProducts = {
       name: "Bedroom",
       slug: "/product/by-room/bedroom",
       description: "Aluminium Windows and Doors for Bedroom",
-      image: "/img/bedroom-img/bedroom-1.jpg",
+      image: "/img/bedroom-img/bedroom-1.webp",
     },
     {
       name: "Living Room",
       slug: "/living-room-aluminium-windows-doors",
       description: "Aluminium Windows and Doors for Living Room",
-      image: "/img/living-room-img/living-room-1.jpg",
+      image: "/img/living-room-img/living-room-1.webp",
     },
     {
       name: "Kitchen",
@@ -37,7 +37,7 @@ const allProducts = {
       name: "Sliding",
       slug: "/aluminium-sliding-windows-doors",
       description: "Sliding Aluminium Windows and Doors",
-      image: "/img/sliding-img/sliding-1.jpg",
+      image: "/img/sliding-img/sliding-1.webp",
     },
     {
       name: "Openable",
@@ -51,13 +51,13 @@ const allProducts = {
       name: "Duraslim Casement",
       slug: "/duraslim-casement",
       description: "Duraslim Slim Aluminium Casement Windows",
-      image: "/img/duraslim-casement-img/duraslim-casement-1.jpg",
+      image: "/img/duraslim-casement-img/duraslim-casement-1.webp",
     },
     {
       name: "Duraslim Tilt & Turn",
       slug: "/duraslim-casement-tilt-and-turn",
       description: "Duraslim Aluminium Casement Tilt & Turn Windows",
-      image: "/img/duraslim-tilt-turn-img/duraslim-tilt-turn-1.jpg",
+      image: "/img/duraslim-tilt-turn-img/duraslim-tilt-turn-1.webp",
     },
     {
       name: "Duraslim Edge Lift & Slide",
@@ -89,13 +89,13 @@ const allProducts = {
       name: "Essential Casement",
       slug: "/essential-casement",
       description: "Essential Series Aluminium Casement Windows",
-      image: "/img/essential-casement-img/essential-casement-1.png",
+      image: "/img/essential-casement-img/essential-casement-1.webp",
     },
     {
       name: "Essential Pro Slider",
       slug: "/essential-proslider",
       description: "Essential Pro Slider Aluminium Windows & Doors",
-      image: "/img/essential-proslider-img/essential-pro-slider-1.png",
+      image: "/img/essential-proslider-img/essential-pro-slider-1.webp",
     },
     {
       name: "Essential Slider",
@@ -109,7 +109,7 @@ const allProducts = {
       name: "By Range",
       slug: "/product/by-range",
       description: "Aluminium Windows & Doors by Range",
-      image: "/img/by-range-img/by-range-1.jpg",
+      image: "/img/by-range-img/by-range-1.webp",
     },
     {
       name: "By Room",
@@ -135,7 +135,7 @@ const allProducts = {
       name: "Essentials Range",
       slug: "/product/by-range/essentials",
       description: "Essentials Aluminium Window & Door Range",
-      image: "/img/essentials-range-img/essentials-range-1.jpg",
+      image: "/img/essentials-range-img/essentials-range-1.webp",
     },
   ],
   location: [
@@ -143,7 +143,37 @@ const allProducts = {
       name: "Rajkot",
       slug: "/rajkot",
       description: "Aluminium Windows & Doors in Rajkot",
-      image: "/img/rajkot-img/rajkot-1.jpg",
+      image: "/img/rajkot-img/rajkot-1.webp",
+    },
+    {
+      name: "Vadodara",
+      slug: "/vadodara",
+      description: "Aluminium Windows & Doors in Vadodara",
+      image: "/img/rajkot-img/rajkot-1.webp",
+    },
+    {
+      name: "Bangalore",
+      slug: "/bangalore",
+      description: "Aluminium Windows & Doors in Bangalore",
+      image: "/img/rajkot-img/rajkot-1.webp",
+    },
+    {
+      name: "Mumbai",
+      slug: "/mumbai",
+      description: "Aluminium Windows & Doors in Mumbai",
+      image: "/img/rajkot-img/rajkot-1.webp",
+    },
+    {
+      name: "Hyderabad",
+      slug: "/hyderabad",
+      description: "Aluminium Windows & Doors in Hyderabad",
+      image: "/img/rajkot-img/rajkot-1.webp",
+    },
+    {
+      name: "Chennai",
+      slug: "/chennai",
+      description: "Aluminium Windows & Doors in Chennai",
+      image: "/img/rajkot-img/rajkot-1.webp",
     },
   ],
 };
@@ -238,8 +268,8 @@ const AllProductsNavigation = () => {
         products={allProducts.rangeDetail}
       />
       <ProductSection
-        title="LOCATION"
-        tag="LOCATION"
+        title="OUR LOCATIONS"
+        tag="LOCATIONS"
         products={allProducts.location}
       />
     </div>

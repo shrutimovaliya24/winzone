@@ -86,7 +86,7 @@ const EssentialProSliderPage = () => {
           />
           <div className="lg:flex max-lg:justify-items-center grid lg:gap-10 md:gap-8 sm:gap-6 gap-4">
             <Image
-              src="/img/essential-proslider-img/essential-pro-slider-1.png"
+              src="/img/essential-proslider-img/essential-pro-slider-1.webp"
               width={402}
               height={408}
               alt="Essential Pro Slider Windows Advantages"

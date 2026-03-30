@@ -133,28 +133,7 @@
   max-width: 100%;
 }
 
-@keyframes smoothPulse {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  25%,
-  75% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.grid-cell {
-  animation-name: smoothPulse;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-  animation-delay: var(--delay);
-}
+/* Grid background now uses pure CSS (no animated SVG paths) */
 
 .product-swiper .swiper-slide {
   transition: all 0.3s ease !important;

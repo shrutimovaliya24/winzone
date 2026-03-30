@@ -90,7 +90,7 @@ const Testimonial = () => {
   return (
     <section className="bg-theme-color relative overflow-hidden flex justify-center">
       <Image
-        src="/img/grid-box.png"
+        src="/img/grid-box.webp"
         width={1440}
         height={1024}
         alt="Background Grid box"
