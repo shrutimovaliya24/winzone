@@ -4,43 +4,59 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useRef } from "react";
+import { cities } from "@/app/_data/cities";
+import { products as winzonProducts } from "@/app/_data/products";
+
+const locationChildren = cities.map((c) => ({
+  name: c.name,
+  href: `/${c.slug}`,
+}));
+
+const productChildren = [
+  { name: "All Products", href: "/product", separator: true },
+  ...winzonProducts.map((p) => ({
+    name: p.name,
+    href: `/${p.slug}`,
+  })),
+];
 
 const navInfo = [
   { id: 1, name: "HOME", href: "/" },
   { id: 2, name: "ABOUT US", href: "/about-us" },
-  { id: 3, name: "PRODUCT", href: "/product" },
+  {
+    id: 3,
+    name: "PRODUCT",
+    href: "/product",
+    children: productChildren,
+    layout: "mega",
+  },
   { id: 4, name: "PROJECT", href: "/project" },
   {
     id: 5,
     name: "LOCATIONS",
     href: "#",
-    children: [
-      { name: "Rajkot", href: "/rajkot" },
-      { name: "Vadodara", href: "/vadodara" },
-      { name: "Bangalore", href: "/bangalore" },
-      { name: "Mumbai", href: "/mumbai" },
-      { name: "Hyderabad", href: "/hyderabad" },
-      { name: "Chennai", href: "/chennai" },
-    ],
+    children: locationChildren,
+    layout: "list",
   },
   { id: 6, name: "BLOG", href: "/blog" },
   { id: 7, name: "CAREER", href: "/career" },
   { id: 8, name: "E-CATALOGUE", href: "/e-catalogue" },
 ];
 
-const locationPaths = ["/rajkot", "/vadodara", "/bangalore", "/mumbai", "/hyderabad", "/chennai"];
+const childPathsForItem = (item) =>
+  item.children ? item.children.map((c) => c.href) : [];
 
 const Header = () => {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileLocationOpen, setMobileLocationOpen] = useState(false);
+  const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [mobileOpenId, setMobileOpenId] = useState(null);
   const dropdownRef = useRef(null);
 
   const toggleMenu = () => setShow(!show);
   const closeMenu = () => {
     setShow(false);
-    setMobileLocationOpen(false);
+    setMobileOpenId(null);
   };
 
   useEffect(() => {
@@ -53,18 +69,26 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleSize);
   }, []);
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside the nav
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
+        setOpenDropdownId(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const isLocationActive = locationPaths.includes(pathname);
+  const isItemActive = (item) => {
+    if (item.children) {
+      const paths = childPathsForItem(item);
+      // For PRODUCT dropdown the parent /product itself is also active
+      if (item.href && item.href !== "#" && pathname === item.href) return true;
+      return paths.includes(pathname);
+    }
+    return pathname === item.href;
+  };
 
   return (
     <header className="border-b border-solid border-theme-color/14">
@@ -83,34 +107,57 @@ const Header = () => {
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center">
+        <nav ref={dropdownRef} className="hidden lg:flex items-center">
           {navInfo.map((item) =>
             item.children ? (
               <div
                 key={item.id}
-                ref={dropdownRef}
                 className="relative"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
+                onMouseEnter={() => setOpenDropdownId(item.id)}
+                onMouseLeave={() => setOpenDropdownId(null)}
               >
                 <button
                   className={`${
-                    isLocationActive
+                    isItemActive(item)
                       ? "text-theme-color font-semibold text-base"
                       : "text-[#777777] text-sm"
                   } px-4 py-3 font-titillium flex items-center gap-1`}
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  onClick={() =>
+                    setOpenDropdownId((id) => (id === item.id ? null : item.id))
+                  }
+                  aria-expanded={openDropdownId === item.id}
+                  aria-haspopup="true"
                 >
                   {item.name}
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${
-                      dropdownOpen ? "rotate-180" : ""
+                      openDropdownId === item.id ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-                {dropdownOpen && (
-                  <div className="absolute top-full left-0 bg-white border border-solid border-[#EBEBEB] rounded-xl shadow-lg py-2 min-w-[180px] z-50">
+                {openDropdownId === item.id && item.layout === "mega" && (
+                  <div className="absolute top-full left-0 bg-white border border-solid border-[#EBEBEB] rounded-xl shadow-lg p-4 min-w-[640px] xl:min-w-[760px] z-50">
+                    <div className="grid grid-cols-3 gap-x-4 gap-y-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={`block px-3 py-2 font-titillium text-sm rounded hover:bg-[#F7F7F7] hover:text-theme-color transition-colors ${
+                            pathname === child.href
+                              ? "text-theme-color font-semibold bg-[#F7F7F7]"
+                              : "text-[#777777]"
+                          } ${child.separator ? "border-b border-solid border-[#EBEBEB] mb-1 pb-2 col-span-3 font-semibold text-theme-color/90 hover:bg-transparent" : ""}`}
+                          onClick={() => setOpenDropdownId(null)}
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {openDropdownId === item.id && item.layout !== "mega" && (
+                  <div className="absolute top-full left-0 bg-white border border-solid border-[#EBEBEB] rounded-xl shadow-lg py-2 min-w-[200px] z-50">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
@@ -120,7 +167,7 @@ const Header = () => {
                             ? "text-theme-color font-semibold bg-[#F7F7F7]"
                             : "text-[#777777]"
                         }`}
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={() => setOpenDropdownId(null)}
                       >
                         {child.name}
                       </Link>
@@ -200,22 +247,27 @@ const Header = () => {
                   <div key={item.id}>
                     <button
                       className={`${
-                        isLocationActive
+                        isItemActive(item)
                           ? "text-theme-color font-semibold text-base"
                           : "text-[#777777] text-sm"
                       } font-titillium flex items-center gap-1 w-full`}
-                      onClick={() => setMobileLocationOpen(!mobileLocationOpen)}
+                      onClick={() =>
+                        setMobileOpenId((id) =>
+                          id === item.id ? null : item.id,
+                        )
+                      }
+                      aria-expanded={mobileOpenId === item.id}
                     >
                       {item.name}
                       <ChevronDown
                         size={14}
                         className={`transition-transform duration-200 ${
-                          mobileLocationOpen ? "rotate-180" : ""
+                          mobileOpenId === item.id ? "rotate-180" : ""
                         }`}
                       />
                     </button>
-                    {mobileLocationOpen && (
-                      <div className="pl-4 mt-2 flex flex-col gap-2 border-l-2 border-solid border-theme-color/20">
+                    {mobileOpenId === item.id && (
+                      <div className="pl-4 mt-2 flex flex-col gap-2 border-l-2 border-solid border-theme-color/20 max-h-[60vh] overflow-y-auto">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
@@ -224,7 +276,7 @@ const Header = () => {
                               pathname === child.href
                                 ? "text-theme-color font-semibold"
                                 : "text-[#777777]"
-                            }`}
+                            } ${child.separator ? "font-semibold text-theme-color/90 border-b border-solid border-[#EBEBEB] pb-2 mb-1" : ""}`}
                             onClick={closeMenu}
                           >
                             {child.name}

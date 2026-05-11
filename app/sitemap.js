@@ -1,3 +1,6 @@
+import { cities } from "./_data/cities";
+import { products as winzonProducts } from "./_data/products";
+
 export const dynamic = "force-static";
 export const revalidate = false;
 
@@ -132,45 +135,21 @@ export default function sitemap() {
     },
   ];
 
-  // Location / city pages (programmatic SEO)
-  const locationPages = [
-    {
-      url: `${baseUrl}/rajkot`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/vadodara`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/bangalore`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/mumbai`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/hyderabad`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/chennai`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-  ];
+  // Winzon System product detail pages — data-driven from app/_data/products
+  const winzonProductPages = winzonProducts.map((p) => ({
+    url: `${baseUrl}/${p.slug}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  // Location / city pages (programmatic SEO) — data-driven from app/_data/cities.js
+  const locationPages = cities.map((c) => ({
+    url: `${baseUrl}/${c.slug}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
 
   const projectPages = [
     {
@@ -250,5 +229,12 @@ export default function sitemap() {
     },
   ];
 
-  return [...staticPages, ...productPages, ...locationPages, ...projectPages, ...blogPages];
+  return [
+    ...staticPages,
+    ...productPages,
+    ...winzonProductPages,
+    ...locationPages,
+    ...projectPages,
+    ...blogPages,
+  ];
 }

@@ -2,6 +2,27 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SvgIcon from "./SvgIcon";
+import { cities } from "@/app/_data/cities";
+import { products as winzonProducts } from "@/app/_data/products";
+
+// Featured product list shown in the footer. The Header dropdown still
+// exposes the full set of 23 products from every page, and sitemap.xml
+// indexes all 23 — so footer just needs a curated, scannable selection.
+const FEATURED_FOOTER_PRODUCTS = [
+  "slimest-window",
+  "indias-best-slim-window",
+  "minimalist-system-window",
+  "slim-sliding-system",
+  "slim-casement-system",
+  "bi-fold-door-system",
+  "aluminium-door-system",
+  "slim-partition-system",
+];
+
+const footerProducts = FEATURED_FOOTER_PRODUCTS.map((slug, i) => {
+  const p = winzonProducts.find((x) => x.slug === slug);
+  return p ? { id: i + 1, name: p.name, href: `/${p.slug}` } : null;
+}).filter(Boolean);
 
 const footerInfo = [
   {
@@ -16,15 +37,19 @@ const footerInfo = [
     ],
   },
   {
-    title: "Our Locations",
+    title: "Featured Products",
     subCategory: [
-      { id: 1, name: "Rajkot", href: "/rajkot" },
-      { id: 2, name: "Vadodara", href: "/vadodara" },
-      { id: 3, name: "Bangalore", href: "/bangalore" },
-      { id: 4, name: "Mumbai", href: "/mumbai" },
-      { id: 5, name: "Hyderabad", href: "/hyderabad" },
-      { id: 6, name: "Chennai", href: "/chennai" },
+      ...footerProducts,
+      { id: 99, name: "View All Products", href: "/product" },
     ],
+  },
+  {
+    title: "Our Locations",
+    subCategory: cities.map((c, i) => ({
+      id: i + 1,
+      name: c.name,
+      href: `/${c.slug}`,
+    })),
   },
   {
     title: "Our Projects",
