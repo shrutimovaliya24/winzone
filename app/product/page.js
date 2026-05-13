@@ -3,6 +3,7 @@ import Advantages from "@/components/Product/Advantages";
 import OurWork from "@/components/Product/OurWork/OurWork";
 import ProductInformation from "@/components/Product/ProductInformation";
 import AllProductsNavigation from "@/components/Product/AllProductsNavigation";
+import WinzonSystemProductsNavigation from "@/components/Product/WinzonSystemProductsNavigation";
 import React from "react";
 
 export const metadata = {
@@ -800,6 +801,7 @@ const page = () => {
       />
       <ProductInformation />
       <Advantages />
+      <WinzonSystemProductsNavigation />
       <AllProductsNavigation />
       <OurWork />
     </div>
